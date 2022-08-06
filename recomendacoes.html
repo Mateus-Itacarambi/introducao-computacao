@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset='utf-8'>
+    <meta name="author" content="Mateus Itacarambi, Igor Scucato, Elizeu Normandia">
+    <meta name="description" content="Nesse site iremos contar a história dos computadores desde sua origem até os dias de hoje e tecnologias futuras. E por fim recomendar um computador.">
+    <meta name="keywords" content="Introdução à Computação,primeira geração,segunda geração,terceira geração,quarta geração,quinta geração,memórias,processadores,ssd,hd,memória ram,intel,amd,apple">
+    <title>Recomendações</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='estilo.css'>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <a href="index.html"><img class="logo" src="img/logo.png" alt="Logo"></a>
+        <ul>
+            <a href="index.html"><li>HOME</li></a>
+            <a href="processadores.html"><li>PROCESSADORES</li></a>
+            <a href="memorias.html"><li>MEMÓRIAS</li></a>
+            <a href="recomendacoes.html"><li>RECOMENDAÇÕES</li></a>
+        </ul>
+    </nav>
+
+    <main id="main-container">
+        <section id="recomendacoes">
+            <h1>Recomendações</h1>
+
+            <p>Se você está pensando em montar um computador mas não sabe quais peças que são compatíveis entre sí ou qual é a melhor configuração 
+            para você, montamos três perfis para ajudar. Qual perfil se enquaixa melhor com a sua necessidade?. E mais abaixo fizemos 
+            uma calculadora para ajudar a estimar outro orçamento de sua preferência.</p>
+        </section>
+
+        <section id="container-card">
+            <div id="card">
+                <div id="card-img">
+                    <img src="img/casual.svg" alt="">
+                </div>
+                <div id="card-titulo">
+                    <h3>Perfil 1</h3>
+                </div>
+                <div id="card-texto">
+                    <p>Utiliza o computador casualmente.</p>
+                </div>
+                <div id="card-botao">
+                    <a href="perfil1.html"><button>Orçamento de R$ 2.000</button></a>
+                </div>
+            </div>
+
+            <div id="card">
+                <div id="card-img">
+                    <img src="img/escritorio.svg" alt="">
+                </div>
+                <div id="card-titulo">
+                    <h3>Perfil 2</h3>
+                </div>
+                <div id="card-texto">
+                    <p>Utiliza o computador para trabalho de escritório.</p>
+                </div>
+                <div id="card-botao">
+                    <a href="perfil2.html"><button>Orçamento de R$ 3.000</button></a>
+                </div>
+            </div>
+
+            <div id="card">
+                <div id="card-img">
+                    <img src="img/gamer.svg" alt="">
+                </div>
+                <div id="card-titulo">
+                    <h3>Perfil 3</h3>
+                </div>
+                <div id="card-texto">
+                    <p>Utiliza o computador para jogos e programs pesados.</p>
+                </div>
+                <div id="card-botao">
+                    <a href="perfil3.html"><button>Orçamento de R$ 5.000</button></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="container-azul">
+        <section id="calculadora">
+            <h2>Calcule seu orçamento</h2>
+
+            <div id="form-calc">
+                <div id="input">
+                    <p>R$</p><input type="number" name="placa-mae" id="placa-mae" placeholder="Placa Mãe">
+                </div>
+                <div id="input">
+                    <p>R$</p><input type="number" name="processador" id="processador" placeholder="Processador">
+                </div>
+                <div id="input">
+                    <p>R$</p><input type="number" name="placa-video" id="placa-video" placeholder="Placa de Vídeo">
+                </div>
+                <div id="input">
+                    <p>R$</p> <input type="number" name="memoria-ram" id="memoria-ram" placeholder="Memória RAM">
+                </div>
+                <div id="input">
+                    <p>R$</p><input type="number" name="armazenamento" id="armazenamento" placeholder="SSD ou HD">
+                </div>
+                <div id="input">
+                    <p>R$</p><input type="number" name="fonte" id="fonte" placeholder="Fonte">
+                </div>
+                <div id="input">
+                    <p>R$</p><input type="number" name="gabinete" id="gabinete" placeholder="Gabinete">
+                </div>
+                <button onclick="orcamento();">CALCULAR</button>
+            </div>
+
+            <h2 class="inline">Total:</h2>
+
+            <p id="total"></p>
+        </section>
+    </div>
+    
+    <footer>
+        <h4>Desenvolvido por:</h4>
+
+        <p><a href="http://instagram.com/elizeu22_22" target="_blank">Elizeu Normandia</a></p>
+        <p><a href="http://instagram.com/" target="_blank">Igor Scucato</a></p>
+
+        <div id="copy">
+            <p><a href="http://instagram.com/_itacarambi_" target="_blank">Mateus Itacarambi</a></p>
+            <p id="copyright">&copy; 2022 E. I. M - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+<script>
+    function orcamento(){
+        let placaMae = parseFloat(document.getElementById("placa-mae").value);
+        let processador = parseFloat(document.getElementById("processador").value);
+        let placaVideo = parseFloat(document.getElementById("placa-video").value);
+        let memoriaRam = parseFloat(document.getElementById("memoria-ram").value);
+        let armazenamento = parseFloat(document.getElementById("armazenamento").value);
+        let fonte = parseFloat(document.getElementById("fonte").value);
+        let gabinete = parseFloat(document.getElementById("gabinete").value);
+
+        let total = placaMae + processador + placaVideo + memoriaRam + armazenamento + fonte + gabinete;
+
+        if (isNaN(total)){
+            document.getElementById("total").innerHTML = "Por favor preencher todos os campos!!!"
+        } else if (total<=2499){
+            document.getElementById("total").innerHTML = "R$" +  total.toFixed(2) + " - Esse orçamento está próximo ao perfil 1.";
+        } else if (total>2499 && total<4000){
+            document.getElementById("total").innerHTML = "R$" +  total.toFixed(2) + " - Esse orçamento está próximo ao perfil 2.";
+        } else{
+            document.getElementById("total").innerHTML = "R$" +  total.toFixed(2) + " - Esse orçamento está próximo ao perfil 3.";
+        };
+    }
+</script>
+</html>
